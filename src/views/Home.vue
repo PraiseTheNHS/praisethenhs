@@ -3,7 +3,7 @@
     <div class="cards-container">
       <div class="container">
         <div class="card-columns">
-          <PraiseCard></PraiseCard>
+          <PraiseCard v-for="praise in praises.data" v-bind:key="praise.id" :praise="praise"></PraiseCard>
         </div>
       </div>
     </div>
@@ -16,6 +16,28 @@ export default {
 
   components: {
     PraiseCard
+  },
+
+  data() {
+    return {
+      praises: []
+    }
+  },
+
+  created() {
+    fetch(`${process.env.VUE_APP_API_BASE_URL}/praise/get`)
+            .then(response => response.json())
+            .then((json) => {
+              console.log(json.data[0])
+              console.log(this)
+              this.praises = json;
+            });
+  },
+
+  methods: {
+    GetPraises() {
+      console.log(process.env.API_BASE_URL)
+    }
   }
 }
 </script>
