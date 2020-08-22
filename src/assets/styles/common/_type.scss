@@ -1,0 +1,48 @@
+html {
+  font-size: 10px;
+}
+
+@font-face {
+  font-family: 'GTWalsheim';
+  src: url('~@/assets/fonts/gtwalsheimlight.ttf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'GTWalsheim';
+  src: url('~@/assets/fonts/gtwalsheimmedium.ttf');
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'GTWalsheim';
+  src: url('~@/assets/fonts/gtwalsheimlight.ttf');
+  font-weight: 300;
+  font-style: normal;
+  font-display: block;
+}
+
+$font-family-sans-serif: 'GTWalsheim';
+
+body {
+  font-size: 1.6rem;
+}
+
+a {
+  color: $warm-peach;
+}
+
+@for $i from 1 through 6 {
+  h#{$i} {
+    color: $charcoal;
+  }
+}
+
+p,
+span {
+  color: $charcoal;
+}
