@@ -1,0 +1,15 @@
+/**
+ * This is the main entry point for globally injected SCSS.
+ */
+
+// Variables, frameworks.
+@import "./variables";
+@import "./type";
+@import "~bootstrap";
+
+// General bits.
+@import "./icomoon";
+
+body {
+  background-color: $shy-grey;
+}
