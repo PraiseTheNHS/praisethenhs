@@ -1,22 +1,24 @@
 <template>
     <div class="card mb-5" data-card="">
-        <div class="card-tape"></div>
+        <div class="card-tape" v-bind:style="{ color: praise.the_colour }"></div>
 
         <div class="card-body">
-            <p class="card-text text-left">The card content</p>
+
+            <div class="card-image lazy" v-if="praise.the_media !== '0'" v-bind:data-src="praise.the_media"></div>
+
+            <p class="card-text text-left">{{ praise.the_content }}</p>
             <div class="card-actions pt-3">
                 <div class="card-claps">
                     <button class="btn btn-no-style" data-action="heart">
                         <div class="heart-wrap d-flex align-items-center">
                             <span class="icon-heart hvr-pop pr-1"></span>
-                            <span class="clap-count pr-3 mr-2">54</span>
+                            <span class="clap-count pr-3 mr-2">{{ praise.claps }}</span>
                         </div>
                     </button>
-
                     <button class="btn btn-no-style" data-action="clap">
                         <div class="clap-wrap d-flex align-items-center">
                             <span class="icon-clap hvr-pop"></span>
-                            <span class="clap-count">15</span>
+                            <span class="clap-count">{{ praise.hearts }}</span>
                         </div>
                     </button>
                 </div>
@@ -25,11 +27,12 @@
 
                     </button>
                     <div class="dropdown">
-                        <button class="btn btn-no-style dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-no-style dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            @click="toggle">
                             <span class="icon-share"></span>
                             Share
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div v-if="shareTrayOpen" class="dropdown-menu d-block" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item copy-link" href="praisethenhs.com" id="">Copy link</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="https://twitter.com/intent/tweet?text=I just praised the efforts of the brave NHS workers. Join me in supporting them here. praisethenhs.com">Share on Twitter</a>
@@ -47,7 +50,22 @@
 
 <script>
     export default {
-        name: 'PraiseCard'
+        name: 'PraiseCard',
+        data() {
+            return {
+                shareTrayOpen: false
+            }
+        },
+
+        props: [
+            'praise'
+        ],
+
+        methods: {
+            toggle() {
+                this.shareTrayOpen = !this.shareTrayOpen;
+            }
+        }
     }
 </script>
 
@@ -68,6 +86,34 @@
         button {
             &:focus {
                 box-shadow: none;
+            }
+        }
+
+        .dropdown {
+            button {
+                &::after {
+                    display: none;
+                }
+            }
+
+            .dropdown-menu {
+                border: none;
+                font-size: 90%;
+                box-shadow: 0 5px 8px rgba(0, 0, 0, 0.29);
+                right: 0 !important;
+                left: auto !important;
+
+                a {
+                    padding: 1.5rem 2.5rem;
+
+                    &:hover {
+                        background-color: rgba(255, 203, 111, 0.16);
+                    }
+
+                    &:active {
+                        background-color: rgba(255, 203, 111, 0.75);
+                    }
+                }
             }
         }
 

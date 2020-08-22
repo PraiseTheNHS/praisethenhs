@@ -24,6 +24,25 @@
     </nav>
 </template>
 
+<style lang="scss">
+    .navbar-light {
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.14);
+
+        .navbar-brand {
+            font-size: 2.8rem;
+        }
+
+        .navbar-nav {
+            .nav-item {
+                .nav-link {
+                    padding: 2rem 2rem 3rem 2rem;
+                    font-weight: bold;
+                    color: #000;
+                }
+            }
+        }
+    }
+</style>
 
 <script>
     export default {

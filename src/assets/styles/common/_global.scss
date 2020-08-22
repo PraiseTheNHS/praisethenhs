@@ -6,10 +6,12 @@
 @import "./variables";
 @import "./type";
 @import "~bootstrap";
+@import "./buttons";
 
 // General bits.
 @import "./icomoon";
 
 body {
   background-color: $shy-grey;
+  font-size: 1.6rem;
 }
