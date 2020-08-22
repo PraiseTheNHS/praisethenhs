@@ -34,6 +34,11 @@ body {
 
 a {
   color: $warm-peach;
+  font-size: 1.6rem;
+}
+
+button {
+  font-size: 1.6rem;
 }
 
 @for $i from 1 through 6 {
